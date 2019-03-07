@@ -1,0 +1,69 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <String>
+#include <time.h>
+#include <cstring>
+#include <vector>
+
+#include <array>
+#include <algorithm>
+#include <math.h>
+
+using namespace std;
+std::string func(std::string s1, std::string s2);
+
+int main()
+
+{
+    std::string temp;
+    temp=func("abs","absa");
+    cout << "Is string palindrome? :" << temp <<endl;
+    return 0;
+}
+
+std::string func(std::string s1,std::string s2)
+{
+
+   std::array<int,128> char_set={0};
+    int c=0;
+    int spc_count=0;
+
+    for(int i=0;i<s1.length();i++)
+    {
+                char_set[s1[i]]++;
+    }
+
+    for(int i=0;i<s2.length();i++)
+    {
+        char_set[s2[i]]--;
+    }
+
+    for(int j=0;j<128;j++)
+    {
+        if(char_set[j]==1||char_set[j]==-1)
+        {
+            c++;
+        }
+        if(char_set[j]!=1 && char_set[j]!=-1 && char_set[j]!=0)
+        {
+            return "No";
+        }
+    }
+    int x=s1.length()- s2.length();
+
+
+
+
+    if(c==1 && std::abs(x)==1 || c==2&&s1.length()==s2.length())
+    {
+        return "Yes";
+
+    }
+    else
+
+        return "No";
+}
+
+
+//O(N)

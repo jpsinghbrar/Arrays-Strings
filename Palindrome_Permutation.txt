@@ -1,0 +1,60 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <String>
+#include <time.h>
+#include <cstring>
+#include <vector>
+
+#include <array>
+#include <algorithm>
+
+using namespace std;
+std::string func(std::string s);
+
+int main()
+
+{
+    std::string temp;
+    temp=func("artttra");
+    cout << "Is string palindrome? :" << temp <<endl;
+    return 0;
+}
+
+std::string func(std::string s)
+{
+
+   std::array<int,128> char_set={0};
+    int c=0;
+    int spc_count=0;
+
+    for(int i=0;i<s.length();i++)
+    {
+
+            if(s[i]!=' ')
+            {
+                char_set[s[i]]++;
+            } else
+            {
+                spc_count++;
+            }
+    }
+
+
+    for(int i=1;i<128;i++) {
+        if (char_set[i]%2!=0 )
+            c++;
+    }
+    if((s.length()-spc_count)%2!=0 && c==1||(s.length()-spc_count)%2==0 && c==0)
+    {
+        return "Yes";
+
+    }
+    else
+        cout << "C :" << c << endl;
+  //  cout << "C :" << c << endl;
+        return "No";
+}
+
+
+// O(N+128)= O(N)
